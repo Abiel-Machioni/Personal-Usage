@@ -1,7 +1,9 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+#IfWinActive, VRising
 
 ; Variable to track the state of the right mouse button
 Global rightButtonPressed := false
@@ -53,21 +55,31 @@ r::
         Send {R up}
         
         ; Pause for 1 second
-        Sleep 1200
+        Sleep 1000
         
         ; Set the pause state to false
         pauseState := false
         
-        if rightButtonPressed
-        {
-            ; Hold the right mouse button again
-            Click right, down
-        }
+    if rightButtonPressed
+      {
+         ; Get the center coordinates of the screen
+         SysGet, screenWidth, 78
+         SysGet, screenHeight, 79
+         centerX := screenWidth // 2
+         centerY := screenHeight // 2
+        
+         ; Move the mouse to the center of the screen
+         MouseMove, centerX, centerY, 0
+        
+
+         ; Hold the right mouse button again
+         Click right, down
+       }
     }
     else
     {
-        ; Press the R key without pausing the right mouse button
-        Send {R}
+       ; Press the R key without pausing the right mouse button
+       Send {R}
     }
 Return
 
@@ -87,21 +99,31 @@ c::
         Send {C up}
         
         ; Pause for 1 second
-        Sleep 1200
+        Sleep 1000
         
         ; Set the pause state to false
         pauseState := false
         
-        if rightButtonPressed
-        {
-            ; Hold the right mouse button again
-            Click right, down
-        }
+    if rightButtonPressed
+      {
+         ; Get the center coordinates of the screen
+         SysGet, screenWidth, 78
+         SysGet, screenHeight, 79
+         centerX := screenWidth // 2
+         centerY := screenHeight // 2
+        
+         ; Move the mouse to the center of the screen
+         MouseMove, centerX, centerY, 0
+        
+
+         ; Hold the right mouse button again
+         Click right, down
+       }
     }
     else
     {
-        ; Press the C key without pausing the right mouse button
-        Send {C}
+       ; Press the C key without pausing the right mouse button
+       Send {C}
     }
 Return
 
@@ -121,21 +143,31 @@ q::
         Send {Q up}
         
         ; Pause for 1 second
-        Sleep 1200
+        Sleep 1000
         
         ; Set the pause state to false
         pauseState := false
         
-        if rightButtonPressed
-        {
-            ; Hold the right mouse button again
-            Click right, down
-        }
+    if rightButtonPressed
+      {
+         ; Get the center coordinates of the screen
+         SysGet, screenWidth, 78
+         SysGet, screenHeight, 79
+         centerX := screenWidth // 2
+         centerY := screenHeight // 2
+        
+         ; Move the mouse to the center of the screen
+         MouseMove, centerX, centerY, 0
+        
+
+         ; Hold the right mouse button again
+         Click right, down
+       }
     }
     else
     {
-        ; Press the Q key without pausing the right mouse button
-        Send {Q}
+       ; Press the Q key without pausing the right mouse button
+       Send {Q}
     }
 Return
 
@@ -155,21 +187,31 @@ f::
         Send {F up}
         
         ; Pause for 1 second
-        Sleep 1200
+        Sleep 1000
         
         ; Set the pause state to false
         pauseState := false
+      
+    if rightButtonPressed
+      {
+         ; Get the center coordinates of the screen
+         SysGet, screenWidth, 78
+         SysGet, screenHeight, 79
+         centerX := screenWidth // 2
+         centerY := screenHeight // 2
         
-        if rightButtonPressed
-        {
-            ; Hold the right mouse button again
-            Click right, down
-        }
+         ; Move the mouse to the center of the screen
+         MouseMove, centerX, centerY, 0
+        
+
+         ; Hold the right mouse button again
+         Click right, down
+       }
     }
     else
     {
-        ; Press the F key without pausing the right mouse button
-        Send {F}
+       ; Press the F key without pausing the right mouse button
+       Send {F}
     }
 Return
 
@@ -189,20 +231,32 @@ t::
         Send {T up}
         
         ; Pause for 1 second
-        Sleep 1200
+        Sleep 1000
         
         ; Set the pause state to false
         pauseState := false
         
-        if rightButtonPressed
-        {
-            ; Hold the right mouse button again
-            Click right, down
-        }
+    if rightButtonPressed
+      {
+         ; Get the center coordinates of the screen
+         SysGet, screenWidth, 78
+         SysGet, screenHeight, 79
+         centerX := screenWidth // 2
+         centerY := screenHeight // 2
+        
+         ; Move the mouse to the center of the screen
+         MouseMove, centerX, centerY, 0
+        
+
+         ; Hold the right mouse button again
+         Click right, down
+       }
     }
     else
     {
-        ; Press the T key without pausing the right mouse button
-        Send {T}
+       ; Press the T key without pausing the right mouse button
+       Send {T}
     }
 Return
+
+#IfWinActive
