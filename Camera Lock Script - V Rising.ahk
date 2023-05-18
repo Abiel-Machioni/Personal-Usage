@@ -7,6 +7,9 @@ SendMode Input
 SetWorkingDir %A_ScriptDir%
 ; Ensures a consistent starting directory.
 
+; Ensure script only works when VRising process is running
+#IfWinActive, VRising
+
 ; Variable to track the state of the right mouse button
 Global rightButtonPressed := false
 
@@ -338,3 +341,73 @@ Return
         }
     }
 Return
+
+; Map the Left Alt key to pause/unpause the script
+~LAlt::
+    if GetKeyState("LAlt", "P") ; Alt key is pressed
+    {
+        ; Check if right mouse button is pressed
+        if rightButtonPressed
+        {
+            ; Release the right mouse button
+            Click right, up
+        }
+        ; Set the pause state to true
+        pauseState := true
+
+        ; Press the Alt key
+        SendInput {LAlt down}
+
+        ; Wait for the physical release of the Alt key
+        KeyWait, LAlt
+
+        ; Release the Alt key
+        SendInput {LAlt up}
+
+        ; Set the pause state to false
+        pauseState := false
+
+        if rightButtonPressed
+        {
+            ; Get the center coordinates of the screen
+            SysGet, screenWidth, 78
+            SysGet, screenHeight, 79
+            centerX := screenWidth // 2
+            centerY := screenHeight // 2
+
+            ; Move the mouse to the center of the screen
+            MouseMove, centerX, centerY, 0
+
+            ; Hold the right mouse button
+            Click right, down
+
+            ; Sleep for a short duration to avoid excessive loop iterations
+            Sleep 10
+        }
+    }
+    else ; Alt key is released
+    {
+        ; Set the pause state to false
+        pauseState := false
+
+        if rightButtonPressed
+        {
+            ; Get the center coordinates of the screen
+            SysGet, screenWidth, 78
+            SysGet, screenHeight, 79
+            centerX := screenWidth // 2
+            centerY := screenHeight // 2
+
+            ; Move the mouse to the center of the screen
+            MouseMove, centerX, centerY, 0
+
+            ; Hold the right mouse button
+            Click right, down
+
+            ; Sleep for a short duration to avoid excessive loop iterations
+            Sleep 10
+        }
+    }
+Return
+
+#IfWinActive
