@@ -2,7 +2,7 @@
 SetWorkingDir %A_ScriptDir%
 SetTitleMatchMode, 2
 
-; Change "Diablo IV" to match the window title of your Diablo 4 game.
+; Store the window title as Diablo IV.
 GameWindowTitle := "Diablo IV"
 
 ; Define the hotkey to trigger the logout.
