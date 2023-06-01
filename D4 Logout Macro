@@ -1,0 +1,15 @@
+#NoEnv
+SetWorkingDir %A_ScriptDir%
+SetTitleMatchMode, 2
+
+; Change "Diablo IV" to match the window title of your Diablo 4 game.
+GameWindowTitle := "Diablo IV"
+
+; Define the hotkey to trigger the logout.
+F3::
+    IfWinExist, %GameWindowTitle%
+    {
+        WinGet, DiabloPID, PID, %GameWindowTitle%
+        Process, Close, %DiabloPID%
+    }
+Return
